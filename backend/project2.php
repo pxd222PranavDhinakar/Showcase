@@ -1,16 +1,15 @@
 <?php
 header('Content-Type: application/json'); // Ensure we're returning JSON
 
-$baseDir = __DIR__ . '/../scripts';  // Adjust the path as necessary
 
 $scriptPaths = [
-    'file_search' => '../search/file_search.sh',
-    'file_filter' => $baseDir . '/search/file_filter.sh',
-    'output_formatter' => $baseDir . '/output/output_formatter.sh',
-    'interactive_mode' => $baseDir . '/interactive/interactive_mode.sh',
-    'batch_processing' => $baseDir . '/batch/batch_processing.sh',
-    'file_metadata' => $baseDir . '/utils/file_metadata.sh',
-    'batch_config' => $baseDir . '/config/batch_config.txt'
+    'file_search' => '../scripts/search/file_search.sh',
+    'file_filter' => '../scripts//search/file_filter.sh',
+    'output_formatter' => $baseDir . '../scripts//output/output_formatter.sh',
+    'interactive_mode' => $baseDir . '../scripts//interactive/interactive_mode.sh',
+    'batch_processing' => $baseDir . '../scripts//batch/batch_processing.sh',
+    'file_metadata' => $baseDir . '../scripts//utils/file_metadata.sh',
+    'batch_config' => $baseDir . '../scripts/config/batch_config.txt'
 ];
 
 $scriptsContent = [];
