@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json'); // Ensure we're returning JSON
 
-$baseDir = __DIR__ . '/..';  // Adjust the path as necessary
+$baseDir = __DIR__ . '/../scripts';  // Adjust the path as necessary
 
 $scriptPaths = [
     'file_search' => '../search/file_search.sh',
