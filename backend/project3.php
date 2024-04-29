@@ -1,23 +1,19 @@
 <?php
-header('Access-Control-Allow-Origin: http://localhost:3000'); // Adjust if your front-end is hosted elsewhere
-header('Content-Type: application/json'); // Setting the correct header for JSON output
+header('Access-Control-Allow-Origin: http://localhost:3000');
+header('Content-Type: application/json');
 
-// Enable error reporting for debugging - remove this in production
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Define the base directory and script paths
-$baseDir = '/home/pxd222/public_html/Showcase';  // Adjust according to your server setup
+$baseDir = '/home/pxd222/public_html/Showcase';
 $scriptPaths = [
     'generate_report' => $baseDir . '/Scripts/generate_report.sh',
 ];
-$reportPath = $baseDir . '/report.md';  // Location of the report file
+$reportPath = $baseDir . '/report.md';
 
-// Check if the action is to load scripts or generate the report
-$action = $_GET['action'] ?? 'load';  // Default action is to load scripts
+$action = $_GET['action'] ?? 'load';
 
 if ($action == 'load') {
-    // Load and send script contents
     $scriptsContent = [];
     foreach ($scriptPaths as $key => $path) {
         if (file_exists($path)) {
@@ -28,15 +24,40 @@ if ($action == 'load') {
     }
     echo json_encode($scriptsContent);
 } else {
-    // Generate the report and send its contents
-    $output = shell_exec("bash " . $scriptPaths['generate_report'] . " 2>&1");
+    $input = '/home/pxd222/public_html/Showcase/Scripts';  // Specify the directory path here
 
-    // Check if the report file exists and send its contents
-    if (file_exists($reportPath)) {
-        $reportContent = file_get_contents($reportPath);
-        echo json_encode(['data' => $reportContent]);
+    $descriptorspec = [
+        0 => ["pipe", "r"],  // stdin
+        1 => ["pipe", "w"],  // stdout
+        2 => ["pipe", "w"]   // stderr
+    ];
+
+    $command = "bash " . $scriptPaths['generate_report'] . " " . escapeshellarg($input);
+    $process = proc_open($command, $descriptorspec, $pipes);
+
+    if (is_resource($process)) {
+        fclose($pipes[0]);
+
+        $output = stream_get_contents($pipes[1]);  // Read output from stdout
+        fclose($pipes[1]);
+
+        $error = stream_get_contents($pipes[2]);  // Read error from stderr
+        fclose($pipes[2]);
+
+        $returnValue = proc_close($process);
+
+        if ($returnValue === 0) {
+            if (file_exists($reportPath)) {
+                $reportContent = file_get_contents($reportPath);
+                echo json_encode(['data' => $reportContent]);
+            } else {
+                echo json_encode(['error' => 'Report file not found.']);
+            }
+        } else {
+            echo json_encode(['error' => 'Error executing script: ' . $error]);
+        }
     } else {
-        echo json_encode(['error' => 'Report file not found.']);
+        echo json_encode(['error' => 'Failed to open process.']);
     }
 }
 ?>

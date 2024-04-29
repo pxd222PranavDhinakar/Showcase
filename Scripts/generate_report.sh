@@ -20,6 +20,11 @@ process_file() {
 process_directory() {
     local directory="$1"
     local indent="$2"
+    local is_root="$3"
+
+    if [ "$is_root" = true ]; then
+        echo "${directory##*/}/" >> "$report_file"
+    fi
 
     local entries=("$directory"/*)
     local num_entries=${#entries[@]}
@@ -32,7 +37,7 @@ process_directory() {
             else
                 echo "$indent|-- ${entry##*/}/" >> "$report_file"
             fi
-            process_directory "$entry" "$indent|   "
+            process_directory "$entry" "$indent|   " false
         elif [ -f "$entry" ]; then
             if [ $i -eq $num_entries ]; then
                 echo "$indent+-- ${entry##*/}" >> "$report_file"
@@ -60,7 +65,7 @@ report_file="$(dirname "$working_directory")/report.md"
 echo "# Directory Structure" > "$report_file"
 echo "" >> "$report_file"
 echo "\`\`\`" >> "$report_file"
-process_directory "$working_directory" "" >> "$report_file"
+process_directory "$working_directory" "" true >> "$report_file"
 echo "\`\`\`" >> "$report_file"
 echo "" >> "$report_file"
 

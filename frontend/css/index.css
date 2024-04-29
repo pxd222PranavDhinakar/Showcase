@@ -153,3 +153,28 @@ rect:hover {
     fill: white; /* Set SVG text color to white */
 }
 
+
+
+#commitLogContainer {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #1a1f34; /* dark navy */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#commitLogContainer h2 {
+    color: #9be9a8; /* green */
+    margin-bottom: 10px;
+}
+
+#commitLog {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff; /* white */
+    background-color: #000000; /* black */
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+    white-space: pre-wrap;
+}

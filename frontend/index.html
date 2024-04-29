@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -22,18 +23,24 @@
                 <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project6.html">Project 6</a></li>
             </ul>
         </nav>
-        <button id="fetchGithubData">Fetch GitHub Data</button>
     </header>
+
     <div class="dashboard">
         <section id="contributionsGraph" class="graph"></section>
         <div id="tooltip" class="tooltip" style="opacity:0;"></div>
+        
+        <section id="commitLogContainer">
+            <h2>Commit Log</h2>
+            <pre id="commitLog"></pre>
+        </section>
     </div>    
+
     <section class="stats">
         <p>This showcase features a variety of small scripting projects...</p>
         <div id="languageStats"></div>
         <canvas id="langChart" width="300" height="300"></canvas>
-        <div id="commitLog"></div>
     </section>
+
     <div id="output"></div>
     <script src="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/js/index.js"></script>
 </body>
