@@ -1,5 +1,5 @@
 document.getElementById('fetchGithubData').addEventListener('click', function() {
-    fetch('http://localhost:8000/backend/', {
+    fetch('http://eecslab-22.case.edu/~pxd222/Showcase/backend/', {
         method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',
