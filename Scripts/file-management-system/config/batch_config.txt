@@ -1,0 +1,11 @@
+name_pattern=test
+content_pattern=
+size_filter=
+type_filter=txt
+modified_filter=
+owner_filter=
+permissions_filter=
+exclude_pattern=
+output_format=long
+sort_criteria=name
+actions=copy

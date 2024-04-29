@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0f24; /* navy blue */
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1a1f34; /* dark navy */
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #2a2f44; /* slightly lighter navy */
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #202530; /* dark gray */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+
+/* Adjust SVG general styling */
+svg {
+    overflow: hidden;
+    margin: 10px auto;  /* Centers the SVG in the section */
+    display: block;  /* Ensures SVG is positioned properly */
+    background-color: #202530;  /* Dark background for contrast */
+    border-radius: 5px;  /* Rounds the corners of the entire SVG */
+    padding: 5px;  /* Padding inside SVG to prevent clipping */
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);  /* Adds shadow for depth */
+    height: auto; /* Allows SVG to grow as needed based on content */
+}
+
+/* Styles specific to the squares in the SVG */
+rect {
+    stroke: #1a1f34;  /* Dark border for each cell to ensure visibility */
+    stroke-width: 0.5;
+    rx: 2;  /* Rounds the corners of each rectangle */
+    ry: 2;  /* Rounds the corners of each rectangle */
+    transition: fill 0.3s ease-in-out;  /* Smooth transition for hover effect */
+}
+
+/* Enhance visibility on hover */
+rect:hover {
+    stroke: #ffffff;
+    stroke-width: 1;
+    cursor: pointer;
+    fill-opacity: 0.8;
+}
+
+/* Style for days without commits to make them visible */
+rect.empty-day {
+    fill: #000000; /* Completely black for empty days */
+}
+
+/* Style adjustment for hover to make it work with black cells */
+rect:hover {
+    stroke: #ffffff;
+    stroke-width: 1;
+    cursor: pointer;
+    fill-opacity: 0.7; /* Slight opacity change on hover */
+}
+
+/* New styles for month labels */
+.month-label {
+    fill: #9be9a8;
+    font-size: 12px;
+    text-anchor: start;
+    font-weight: bold;
+    dominant-baseline: hanging; /* Ensures the text is aligned with the top of the line */
+}
+
+/* Styles specific to the squares in the SVG */
+.day-cell {
+    stroke: #1a1f34;
+    stroke-width: 0.5;
+    rx: 3; /* Rounded corners for visual appeal */
+    ry: 3;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle shadow for each cell */
+}
+
+/* Tooltip Enhancement (assuming default browser tooltip) */
+.day-cell:hover {
+    stroke: #ffffff;
+    stroke-width: 2;
+    cursor: pointer;
+    fill-opacity: 1;  /* Increase visibility on hover */
+}
+
+/* Style for days without commits to make them visible */
+.day-cell.empty-day {
+    fill: #161b22; /* Dark gray to stand out from the background */
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    padding: 8px;
+    font-size: 12px;
+    background: black; /* Changed from lightgrey to black */
+    color: white; /* Ensure text is white for readability */
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Styles for text within the SVG in the legend */
+.graph text {
+    fill: white; /* Set SVG text color to white */
+}
+

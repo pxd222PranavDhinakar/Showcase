@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism.css"> <!-- Prism.js CSS -->
+    <script src="https://unpkg.com/prismjs/prism.js"></script> <!-- Prism.js library -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1 - System Resource Monitoring</title>
+    <link rel="stylesheet" href="css/project1.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+    <!-- Include shared header -->
+    <header>
+        <h1>Welcome to My Project Showcase</h1>
+        <nav>
+            <ul>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/index.html">Home</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project1.html">Project 1</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project2.html">Project 2</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project3.html">Project 3</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project4.html">Project 4</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project5.html">Project 5</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project6.html">Project 6</a></li>
+            </ul>
+        </nav>        
+    </header>
+
+    <section>
+        <h2>Project 1: System Resource Monitoring</h2>
+        <p>This project demonstrates a live system resource monitor. It shows current CPU, memory, disk, and network usage. Below is the script that runs on the server to collect this information:</p>
+        <pre id="codeBlock">#!/bin/bash
+
+            # Thresholds
+            cpu_threshold=75
+            mem_threshold=70
+            disk_threshold=80
+            network_threshold=1000  # KB/s
+            
+            # Get CPU usage (macOS adjusted command)
+            cpu_usage=$(top -l 1 -s 0 -n 0 | awk '/CPU usage:/ {print $3}' | sed 's/%//')
+            
+            # Get Memory usage (macOS adjusted method)
+            mem_total=$(sysctl hw.memsize | awk '{print $2}')
+            mem_free=$(vm_stat | grep "Pages free" | awk '{print $3}' | sed 's/\.//')
+            # Converting pages to bytes (assuming page size is 4096 bytes)
+            mem_free_bytes=$(($mem_free * 4096))
+            mem_usage=$(echo "scale=2; (1 - $mem_free_bytes / $mem_total) * 100" | bc)
+            
+            # Get Disk usage (should work on macOS as well)
+            disk_usage=$(df / | awk 'END{print $5}' | sed 's/%//')
+            
+            # Network activity: simplified version, monitor data packets instead
+            network_in_packets=$(netstat -ib | awk '/en0/ && /Link#/{print $7}')  # Replace 'en0' with your network interface
+            network_out_packets=$(netstat -ib | awk '/en0/ && /Link#/{print $10}') # Replace 'en0' with your network interface
+            
+            # Check and print alerts
+            echo "Resource Usage:"
+            echo "CPU Usage: $cpu_usage%"
+            echo "Memory Usage: $mem_usage%"
+            echo "Disk Usage: $disk_usage%"
+            echo "Network IN Packets: $network_in_packets"
+            echo "Network OUT Packets: $network_out_packets"
+            
+            if (( $(echo "$cpu_usage > $cpu_threshold" | bc -l) )); then
+              echo "Alert: CPU usage is above threshold."
+            fi
+            if (( $(echo "$mem_usage > $mem_threshold" | bc -l) )); then
+              echo "Alert: Memory usage is above threshold."
+            fi
+            if (( $(echo "$disk_usage > $disk_threshold" | bc -l) )); then
+              echo "Alert: Disk usage is above threshold."
+            fi
+            if [[ "$network_in_packets" -gt "$network_threshold" || "$network_out_packets" -gt "$network_threshold" ]]; then
+              echo "Alert: Network activity is above threshold."
+            fi
+        </pre>
+        <button id="runProject1">Run Script</button>
+        <div id="result"><strong>Output:</strong><br> <span></span></div>
+    </section>    
+
+    <footer>
+        <!-- Your footer content here -->
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            $('#runProject1').on('click', function() {
+                $.ajax({
+                    url: 'http://eecslab-22.case.edu/~pxd222/Showcase/backend/project1.php',
+                    type: 'GET',
+                    success: function(response) {
+                        // Update the content of 'span' within 'div#result' with the data received
+                        $('#result span').html(response.data);
+                    },
+                    error: function(error) {
+                        // Display error message if the AJAX call fails
+                        $('#result span').html('<p>Error loading data.</p>');
+                    }
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>

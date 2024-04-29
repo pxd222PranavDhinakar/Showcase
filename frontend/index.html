@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <link rel="stylesheet" href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Project Showcase</h1>
+        <nav>
+            <ul>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/index.html">Home</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project1.html">Project 1</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project2.html">Project 2</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project3.html">Project 3</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project4.html">Project 4</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project5.html">Project 5</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project6.html">Project 6</a></li>
+            </ul>
+        </nav>
+        <button id="fetchGithubData">Fetch GitHub Data</button>
+    </header>
+    <div class="dashboard">
+        <section id="contributionsGraph" class="graph"></section>
+        <div id="tooltip" class="tooltip" style="opacity:0;"></div>
+    </div>    
+    <section class="stats">
+        <p>This showcase features a variety of small scripting projects...</p>
+        <div id="languageStats"></div>
+        <canvas id="langChart" width="300" height="300"></canvas>
+        <div id="commitLog"></div>
+    </section>
+    <div id="output"></div>
+    <script src="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/js/index.js"></script>
+</body>
+</html>
