@@ -54,7 +54,7 @@
             // Function to load script contents
             function loadScriptContents() {
                 $.ajax({
-                    url: '/backend/project3.php',
+                    url: 'http://eecslab-22.case.edu/~pxd222/Showcase/backend/project3.php',
                     type: 'GET',
                     data: {action: 'load'},
                     dataType: 'json',
@@ -74,7 +74,7 @@
         
             $('#runProject3').on('click', function() {
                 $.ajax({
-                    url: '/backend/project3.php',
+                    url: 'http://eecslab-22.case.edu/~pxd222/Showcase/backend/project3.php',
                     type: 'GET',
                     data: {action: 'generate'},
                     dataType: 'json',
