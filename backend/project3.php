@@ -30,6 +30,4 @@ if (file_exists($reportPath)) {
     echo json_encode(['error' => 'Report file not found.']);
 }
 
-// To debug, consider writing to a log file instead of outputting directly
-file_put_contents('debug_log.txt', $scriptOutput);
 ?>
