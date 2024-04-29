@@ -1,0 +1,142 @@
+/* project3.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0f24; /* navy blue */
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1a1f34; /* dark navy */
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #2a2f44; /* slightly lighter navy */
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #25303f; /* Darker background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+button {
+    background-color: #007bff; /* Blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+#result {
+    background-color: #202530; /* dark gray */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: #ccc; /* Light gray */
+    font-family: 'Courier New', monospace; /* Monospaced font for code */
+    overflow-x: auto; /* Enables horizontal scrolling if needed */
+}
+
+pre, code {
+    white-space: pre; /* Preserves whitespace and line breaks */
+    word-wrap: normal; /* Prevents word wrapping */
+    overflow-x: auto; /* Horizontal scroll for overflow */
+    display: block; /* Block display for full-width */
+    padding: 10px;
+    border-radius: 5px;
+    background: none; /* Removes any background styling from 'pre' */
+}
+
+pre[class*="language-"], code[class*="language-"] {
+    tab-size: 2; /* Sets the tab size in spaces for better alignment */
+    line-height: 1.5; /* Improves line spacing for readability */
+}
+
+#result .content {
+    background-color: #202530; /* dark gray */
+    color: #ccc; /* light gray text for readability */
+    padding: 20px;
+    border-radius: 5px;
+    overflow: auto; /* Allows for scrolling if content overflows */
+    font-family: 'Courier New', Courier, monospace; /* Optional: Changes font to monospace for better code readability */
+}
+
+/* Enhance the visibility of links */
+#result .content a {
+    color: #4a90e2; /* Brighter blue for links */
+    text-decoration: none; /* Removes underline */
+}
+
+#result .content a:hover {
+    text-decoration: underline; /* Adds underline on hover for better interaction feedback */
+}
+
+/* Style for tables in Markdown, if any */
+#result .content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#result .content th, #result .content td {
+    border: 1px solid #444; /* Lighter borders for table cells */
+    padding: 8px;
+    text-align: left;
+}
+
+#result .content th {
+    background-color: #323945; /* Darker background for table headers */
+}
+
+/* Style for blockquotes */
+#result .content blockquote {
+    border-left: 3px solid #4a90e2; /* Bright blue vertical line for blockquotes */
+    margin: 10px 0;
+    padding-left: 20px;
+    font-style: italic;
+    color: #ddd; /* Lighter text within blockquote for emphasis */
+}
+
+/* Additional styles for code blocks and inline code */
+#result .content pre, #result .content code {
+    background-color: #2a2f44; /* Darker background for code blocks */
+    color: #f8f8f2; /* Bright color for code */
+    border-radius: 3px;
+    padding: 5px;
+}
+
+#result .content pre {
+    overflow-x: auto; /* Allows horizontal scrolling for long lines of code */
+}
+

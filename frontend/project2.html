@@ -1,17 +1,19 @@
+<!--project2.html-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 2 - Description</title>
-    <link rel="stylesheet" href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/css/project2.css"> <!-- Updated link to project2.css -->
-    <!-- Include shared style -->
-    <link rel="stylesheet" href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/css/style.css">
+    <link rel="stylesheet" href="css/project2.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism.css">
+    <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism-okaidia.css"> <!-- Prism.js theme -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/prismjs/prism.js"></script>
 </head>
-
 <body>
     <!-- Include shared header -->
-    <!-- Start Shared Header -->
     <header>
         <h1>Welcome to My Project Showcase</h1>
         <nav>
@@ -24,20 +26,37 @@
                 <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project5.html">Project 5</a></li>
                 <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project6.html">Project 6</a></li>
             </ul>
-        </nav>        
+        </nav>
     </header>
-    <!-- End Shared Header -->
 
     <section>
-        <h1>Project 2: System Administration Example</h1>
-        <!-- Your project content here -->
+        <h2>Project 2: System Administration Scripts</h2>
+        <div id="scriptsContainer"></div>
     </section>
 
-    <!-- Include shared footer -->
-    <!-- Start Shared Footer -->
     <footer>
-        <!-- Your footer content here -->
+        <!-- Footer content here -->
     </footer>
-    <!-- End Shared Footer -->
+
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'http://eecslab-22.case.edu/~pxd222/Showcase/backend/project2.php',
+                method: 'GET',
+                dataType: 'json', // Ensure that jQuery treats the response as JSON
+                success: function(scripts) {
+                    var container = $('#scriptsContainer');
+                    container.empty(); // Clear previous contents
+                    $.each(scripts, function(key, content) {
+                        container.append('<h3>' + key.replace('_', ' ').toUpperCase() + '</h3><pre class="language-bash"><code class="language-bash">' + content + '</code></pre>');
+                    });                    
+                    Prism.highlightAll(); // Apply syntax highlighting
+                },
+                error: function(xhr, status, error) {
+                    $('#scriptsContainer').html('<p>Error loading scripts: ' + error + '</p>');
+                }
+            });
+        });
+    </script>        
 </body>
 </html>
