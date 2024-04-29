@@ -4,7 +4,7 @@ header('Content-Type: application/json'); // Ensure we're returning JSON
 $baseDir = __DIR__ . '/..';  // Adjust the path as necessary
 
 $scriptPaths = [
-    'file_search' => $baseDir . '/search/file_search.sh',
+    'file_search' => '../search/file_search.sh',
     'file_filter' => $baseDir . '/search/file_filter.sh',
     'output_formatter' => $baseDir . '/output/output_formatter.sh',
     'interactive_mode' => $baseDir . '/interactive/interactive_mode.sh',
