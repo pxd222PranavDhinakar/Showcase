@@ -1,8 +1,8 @@
 <?php
 header('Content-Type: application/json'); // Ensure we're returning JSON
 
-// Define the base directory as the parent directory of the current script directory
-$baseDir = dirname(__DIR__);  // This goes up one level from the current directory
+// Define the base directory relative to the current script file
+$baseDir = '/home/pxd222/public_html/Showcase';  // Adjust according to your server setup
 
 $scriptPaths = [
     'file_search' => $baseDir . '/scripts/search/file_search.sh',
