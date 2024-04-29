@@ -7,10 +7,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Path to the Bash script
-$scriptPath = '../scripts/generate_report.sh';
+$scriptPath = '../Scripts/generate_report.sh';
 
 // Path to the directory you want to generate the report for
-$directoryPath = '../scripts';
+$directoryPath = '../Scripts';
 
 // Execute the script and capture the output
 $scriptOutput = shell_exec("bash $scriptPath $directoryPath 2>&1");
