@@ -5,13 +5,13 @@ header('Content-Type: application/json'); // Ensure we're returning JSON
 $baseDir = '/home/pxd222/public_html/Showcase';  // Adjust according to your server setup
 
 $scriptPaths = [
-    'file_search' => $baseDir . '/scripts/search/file_search.sh',
-    'file_filter' => $baseDir . '/scripts/search/file_filter.sh',
-    'output_formatter' => $baseDir . '/scripts/output/output_formatter.sh',
-    'interactive_mode' => $baseDir . '/scripts/interactive/interactive_mode.sh',
-    'batch_processing' => $baseDir . '/scripts/batch/batch_processing.sh',
-    'file_metadata' => $baseDir . '/scripts/utils/file_metadata.sh',
-    'batch_config' => $baseDir . '/scripts/config/batch_config.txt'
+    'file_search' => $baseDir . '/scripts/file-management-system/search/file_search.sh',
+    'file_filter' => $baseDir . '/scripts/file-management-system/search/file_filter.sh',
+    'output_formatter' => $baseDir . '/scripts/file-management-system/output/output_formatter.sh',
+    'interactive_mode' => $baseDir . '/scripts/file-management-system/interactive/interactive_mode.sh',
+    'batch_processing' => $baseDir . '/scripts/file-management-system/batch/batch_processing.sh',
+    'file_metadata' => $baseDir . '/scripts/file-management-system/utils/file_metadata.sh',
+    'batch_config' => $baseDir . '/scripts/file-management-system/config/batch_config.txt'
 ];
 
 $scriptsContent = [];
