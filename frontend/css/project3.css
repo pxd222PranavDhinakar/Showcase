@@ -76,7 +76,8 @@ pre, code {
     display: block; /* Block display for full-width */
     padding: 10px;
     border-radius: 5px;
-    background: none; /* Removes any background styling from 'pre' */
+    background: #2d2d2d; /* A darker background for better contrast */
+    color: #ccc; /* Lighter text color */
 }
 
 pre[class*="language-"], code[class*="language-"] {
@@ -139,4 +140,3 @@ pre[class*="language-"], code[class*="language-"] {
 #result .content pre {
     overflow-x: auto; /* Allows horizontal scrolling for long lines of code */
 }
-

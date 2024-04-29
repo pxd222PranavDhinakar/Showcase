@@ -1,33 +1,42 @@
 <?php
-header('Access-Control-Allow-Origin: http://localhost:3000'); // Allow AJAX calls from your Node.js server
-header('Content-Type: application/json'); // Ensuring the header is set before any output
+header('Access-Control-Allow-Origin: http://localhost:3000'); // Adjust if your front-end is hosted elsewhere
+header('Content-Type: application/json'); // Setting the correct header for JSON output
 
-// Enable error reporting
+// Enable error reporting for debugging - remove this in production
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Path to the Bash script
-$scriptPath = '../Scripts/generate_report.sh';
+// Define the base directory and script paths
+$baseDir = '/Users/pranavdhinakar/Documents/Blog';  // Adjust according to your server setup
+$scriptPaths = [
+    'generate_report' => $baseDir . '/Scripts/generate_report.sh',
+];
+$reportPath = $baseDir . '/report.md';  // Location of the report file
 
-// Path to the directory you want to generate the report for
-$directoryPath = '../Scripts';
+// Check if the action is to load scripts or generate the report
+$action = $_GET['action'] ?? 'load';  // Default action is to load scripts
 
-// Execute the script and capture the output
-$scriptOutput = shell_exec("bash $scriptPath $directoryPath 2>&1");
-
-// Path to the generated report file
-$reportPath = '../report.md';
-
-// Check if the report file exists
-if (file_exists($reportPath)) {
-    // Read the contents of the report file
-    $reportContent = file_get_contents($reportPath);
-    
-    // Send the report content back to the frontend as JSON
-    echo json_encode(['data' => $reportContent]);
+if ($action == 'load') {
+    // Load and send script contents
+    $scriptsContent = [];
+    foreach ($scriptPaths as $key => $path) {
+        if (file_exists($path)) {
+            $scriptsContent[$key] = htmlspecialchars(file_get_contents($path));
+        } else {
+            $scriptsContent[$key] = "Error: File not found - " . $path;
+        }
+    }
+    echo json_encode($scriptsContent);
 } else {
-    // If the report file doesn't exist, send an error message
-    echo json_encode(['error' => 'Report file not found.']);
-}
+    // Generate the report and send its contents
+    $output = shell_exec("bash " . $scriptPaths['generate_report'] . " 2>&1");
 
+    // Check if the report file exists and send its contents
+    if (file_exists($reportPath)) {
+        $reportContent = file_get_contents($reportPath);
+        echo json_encode(['data' => $reportContent]);
+    } else {
+        echo json_encode(['error' => 'Report file not found.']);
+    }
+}
 ?>
