@@ -26,9 +26,11 @@
     </header>
 
     <div class="dashboard">
+        <p>This is a graph to display the commit schedule of this project. It shows which days of the past month were class days and which days commits were made to the repository. This graph is constructed from realtime data obtained through the github api.</p>
         <section id="contributionsGraph" class="graph"></section>
         <div id="tooltip" class="tooltip" style="opacity:0;"></div>
         
+        <p>This is the commit log of this repository being retrieved in real time from the github API</p>
         <section id="commitLogContainer">
             <h2>Commit Log</h2>
             <pre id="commitLog"></pre>
@@ -36,7 +38,7 @@
     </div>    
 
     <section class="stats">
-        <p>This showcase features a variety of small scripting projects...</p>
+        <p>This is a graph to display the distribution of the various languages used in this project. This graph is constructed from realtime data obtained through the github api.</p>
         <div id="languageStats"></div>
         <canvas id="langChart" width="300" height="300"></canvas>
     </section>

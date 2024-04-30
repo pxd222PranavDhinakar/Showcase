@@ -28,8 +28,8 @@
         </nav>
     </header>
     <section>
-        <h2>Project 6: PHP Scripts</h2>
-        <p>This project showcases the PHP scripts running on the backend of the application.</p>
+        <h2>Project 6: PHP Backend Display</h2>
+        <p>This project showcases the PHP scripts that comprise the backend of this application.</p>
         <div id="scriptsContainer" class="script-container script-container--full-width"></div>
     </section>
     <footer>
@@ -65,17 +65,17 @@
                 case 'app.js':
                     return 'This script is the main entry point for the Node.js application.';
                 case 'index.php':
-                    return 'This script handles the main functionality of the PHP backend.';
+                    return 'This script handles communication with the github API and gets all of the commit log and language data for the repository.';
                 case 'project1.php':
-                    return 'This script contains the logic for Project 1.';
+                    return 'This script handles running the bash script and obtaining the output of that script.';
                 case 'project2.php':
-                    return 'This script contains the logic for Project 2.';
+                    return 'This script grabs all of the script contents that comprises the file management system and gives them to the frontend to display.';
                 case 'project3.php':
-                    return 'This script contains the logic for Project 3.';
+                    return 'This script runs the generate_report bash script to generate a markdown report of the directory and then gets the contents of that report for the frontend to display.';
                 case 'project4.php':
-                    return 'This script contains the logic for Project 4.';
+                    return 'This scrpt communicates with the github api to get the videos contained on a repository for the frontend to display.';
                 case 'project5.php':
-                    return 'This script contains the logic for Project 5.';
+                    return 'This script contains obtains teh contents of the awk script and assembly script for the frontend to display, it also runs the awk script on the assembly code and gets the output for the frontend to display.';
                 case 'project6.php':
                     return 'This script retrieves the contents of all PHP scripts in the backend directory and sends them to the project6.html page for display.';
                 default:
