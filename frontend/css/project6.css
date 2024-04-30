@@ -1,0 +1,97 @@
+/* project6.css */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #0a0f24; /* navy blue */
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1a1f34; /* dark navy */
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #2a2f44; /* slightly lighter navy */
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #25303f; /* Darker background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.script-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.script-container--full-width .script-item {
+    width: 90%;
+}
+
+.script-container--half-width .script-item {
+    width: 48%;
+}
+
+.script-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #202530; /* dark gray */
+    border-radius: 5px;
+}
+
+pre {
+    background-color: #2d2d2d; /* A darker background for better contrast */
+    color: #e6b800; /* Gold text for better visibility */
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap; /* Maintains formatting */
+    overflow-x: auto; /* Ensures content is scrollable horizontally if needed */
+}
+
+h2 {
+    border-bottom: 1px solid #2a2f44; /* slightly lighter navy */
+    padding-bottom: 5px;
+}
+
+pre.language-php {
+    background-color: #2d2d2d; /* A darker background for better contrast */
+    color: #ccc; /* Lighter text color */
+    overflow: auto; /* Ensures that scrollbars appear if the content is too wide */
+}
+
+code.language-php {
+    padding: 0; /* Removes padding inside code blocks, if desired */
+}
+
+@media (max-width: 768px) {
+    .script-container--half-width .script-item {
+        width: 100%;
+    }
+}

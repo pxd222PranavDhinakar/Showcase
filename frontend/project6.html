@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 6 - PHP Scripts</title>
+    <link rel="stylesheet" href="css/project6.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism.css">
+    <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism-okaidia.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/prismjs/prism.js"></script>
+</head>
+<body>
+    <!-- Include shared header -->
+    <header>
+        <h1>Welcome to My Project Showcase</h1>
+        <nav>
+            <ul>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/index.html">Home</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project1.html">Project 1</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project2.html">Project 2</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project3.html">Project 3</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project4.html">Project 4</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project5.html">Project 5</a></li>
+                <li><a href="http://eecslab-22.case.edu/~pxd222/Showcase/frontend/project6.html">Project 6</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Project 6: PHP Scripts</h2>
+        <p>This project showcases the PHP scripts running on the backend of the application.</p>
+        <div id="scriptsContainer" class="script-container script-container--full-width"></div>
+    </section>
+    <footer>
+        <!-- Footer content here -->
+    </footer>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'http://eecslab-22.case.edu/~pxd222/Showcase/backend/project6.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function(scripts) {
+                    var container = $('#scriptsContainer');
+                    container.empty(); // Clear previous contents
+                    $.each(scripts, function(filename, data) {
+                        var explanation = getScriptExplanation(filename);
+                        var scriptElement = $('<div class="script-item"></div>');
+                        scriptElement.append('<h3>' + data.title + '</h3>');
+                        scriptElement.append('<pre class="language-php"><code class="language-php">' + data.content + '</code></pre>');
+                        scriptElement.append('<p>' + explanation + '</p>');
+                        container.append(scriptElement);
+                    });
+                    Prism.highlightAll(); // Apply syntax highlighting
+                },
+                error: function(xhr, status, error) {
+                    $('#scriptsContainer').html('<p>Error loading scripts: ' + error + '</p>');
+                }
+            });
+        });
+
+        function getScriptExplanation(filename) {
+            switch (filename) {
+                case 'app.js':
+                    return 'This script is the main entry point for the Node.js application.';
+                case 'index.php':
+                    return 'This script handles the main functionality of the PHP backend.';
+                case 'project1.php':
+                    return 'This script contains the logic for Project 1.';
+                case 'project2.php':
+                    return 'This script contains the logic for Project 2.';
+                case 'project3.php':
+                    return 'This script contains the logic for Project 3.';
+                case 'project4.php':
+                    return 'This script contains the logic for Project 4.';
+                case 'project5.php':
+                    return 'This script contains the logic for Project 5.';
+                case 'project6.php':
+                    return 'This script retrieves the contents of all PHP scripts in the backend directory and sends them to the project6.html page for display.';
+                default:
+                    return 'No explanation available for this script.';
+            }
+        }
+    </script>
+</body>
+</html>
