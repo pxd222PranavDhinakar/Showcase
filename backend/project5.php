@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Define the base directory and script paths
-$baseDir = '/Users/pranavdhinakar/Documents/Blog';  // Adjust according to your server setup
+$baseDir = '/home/pxd222/public_html/Showcase';  // Adjust according to your server setup
 $scriptPath = $baseDir . '/Scripts/asm_analysis.awk';
 $pointerSPath = $baseDir . '/C/pointer.s';
 
