@@ -178,3 +178,11 @@ rect:hover {
     overflow: auto;
     white-space: pre-wrap;
 }
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #cccccc; /* Light gray color for better visibility */
+}
