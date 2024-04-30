@@ -22,6 +22,15 @@ switch ($requestedPath) {
     case '/project2':
         $htmlFile = $htmlFilesDir . '/project2.html';
         break;
+    case '/project3':
+        $htmlFile = $htmlFilesDir . '/project3.html';
+        break;
+    case '/project4':
+        $htmlFile = $htmlFilesDir . '/project4.html';
+        break;
+    case '/project5':
+        $htmlFile = $htmlFilesDir . '/project5.html';
+        break;
     default:
         http_response_code(404);
         echo 'Page not found';
