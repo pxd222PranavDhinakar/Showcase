@@ -183,7 +183,7 @@ p {
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 20px;
-    text-align: center;
+    text-align: left;
     color: #cccccc; /* Light gray color for better visibility */
     max-width: 600px; /* Limit maximum width of paragraphs */
     margin-left: auto; /* Center the paragraphs horizontally */
