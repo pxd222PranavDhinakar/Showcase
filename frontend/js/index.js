@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchGithubData() {
-    fetch('http://localhost:8000/backend/', {
+    fetch('http://eecslab-22.case.edu/~pxd222/Showcase/backend/', {
         method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',
