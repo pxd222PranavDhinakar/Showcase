@@ -192,3 +192,8 @@ rect:hover {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
 }
+
+.highlight {
+    color: #9be9a8; /* Green color for highlighting */
+    font-weight: bold; /* Bold text for better visibility */
+}
