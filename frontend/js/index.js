@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchGithubData() {
-    fetch('http://eecslab-22.case.edu/~pxd222/Showcase/backend/', {
+    fetch('http://eecslab-22.case.edu/~pxd222/Showcase/backend/index.php', {
         method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',
